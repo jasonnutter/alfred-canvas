@@ -19,6 +19,10 @@ if (accessToken) {
             alfy.output(domains);
         });
 } else {
-    const errors = [];
-
+    alfy.output([
+        {
+            title: 'Access Token required',
+            subtitle: 'You must run canvas_token to set your API key'
+        }
+    ]);
 }

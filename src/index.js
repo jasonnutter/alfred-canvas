@@ -21,9 +21,25 @@ if (accessToken && domain) {
                     pathname: `/courses/${course.id}`
                 })
             }));
-            alfy.output(courses);
+            alfy.output(alfy.inputMatches(courses, 'title'));
         });
 } else {
+    const errors = [];
 
+    if (!accessToken) {
+        errors.push({
+            title: 'Access Token required',
+            subtitle: 'You must run canvas_token to set your API key'
+        });
+    }
+
+    if (!domain) {
+        errors.push({
+            title: 'Domain required',
+            subtitle: 'You must run canvas_domain to set your Canvas site domain'
+        });
+    }
+
+    alfy.output(errors);
 }
 
